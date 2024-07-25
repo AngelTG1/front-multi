@@ -12,19 +12,28 @@ import {
   Navigate,
 } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Prueba from "./components/Prueba";
+import PrivateRoute from "./components/PrivateRoute";
+import { AuthProvider } from './context/AuthContext';
+import Login from "./pages/Login";
 
 function App() {
   return (
     <>
-      <Router>
-        <Navbar/>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Infrared" element={<Infrared />} />
-          <Route path="/Heart" element={<Heart />} />
-          <Route path="/Viriability" element={<Viriability />} />
-        </Routes>
-      </Router>
+      <AuthProvider>
+        <Router>
+          <Navbar/>
+          <Routes>
+            <Route path="/home" element={<Home />} />
+            <Route path="/" element={<Login/>} />
+            {/* <Route path="/home" element={<PrivateRoute><Home /></PrivateRoute>} /> */}
+            <Route path="/prueba" element={<Prueba/>} />
+            <Route path="/Infrared" element={<Infrared />} />
+            <Route path="/Heart" element={<Heart />} />
+            <Route path="/Viriability" element={<Viriability />} />
+          </Routes>
+        </Router>
+      </AuthProvider>
     </>
   );
 }

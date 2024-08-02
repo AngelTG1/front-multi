@@ -11,7 +11,6 @@ function Infrared() {
 
   useEffect(() => {
     const ws = new WebSocket('ws://localhost:3000');
-
     ws.onopen = () => {
       console.log('WebSocket connected');
     };
